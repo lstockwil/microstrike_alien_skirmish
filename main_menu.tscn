@@ -1,0 +1,215 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.16, 0.678, 1, 0.12549 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.4, 0.4, 0.4, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+bg_color = Color( 0.2, 0.2, 0.2, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.333333, 0.333333, 0.333333, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.266667, 0.266667, 0.266667, 1 )
+border_blend = true
+
+[sub_resource type="Theme" id=5]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Control
+
+
+# This script demonstrates how to alter StyleBoxes at runtime.
+# Custom theme item properties aren't considered Object properties per se.
+# This means that you should use `add_stylebox_override(\"normal\", ...)`
+# instead of `set(\"custom_styles/normal\", ...)`.
+
+onready var label = $StartScreen/Label
+onready var start_button = $StartScreen/StartButton
+onready var settings_button = $StartScreen/SettingsButton
+onready var exit_button = $StartScreen/ExitButton
+
+
+
+onready var startscreen_buttons = [start_button, settings_button, exit_button]
+
+# Save the label color so it can be reset.
+#var default_label_color = label.get_color(\"font_color\")
+
+
+func _ready():
+	#Align the center text
+	label.ALIGN_CENTER
+	#label.font = \"Comic Sans\"
+	# Focus the first button automatically for keyboard/controller-friendly navigation.
+	start_button.grab_focus()
+
+
+func _on_start_button_pressed():
+	# We have to modify the normal, hover and pressed styleboxes all at once
+	# to get a correct appearance when the button is hovered or pressed.
+	# We can't use a single StyleBox for all of them as these have different
+	# background colors.
+	var new_stylebox_normal = start_button.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(1, 1, 0)
+	
+	var new_stylebox_hover = start_button.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(1, 1, 0)
+	
+	var new_stylebox_pressed = start_button.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(1, 1, 0)
+	
+	
+	
+	start_button.add_stylebox_override(\"normal\", new_stylebox_normal)
+	start_button.add_stylebox_override(\"hover\", new_stylebox_hover)
+	start_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+	
+	# Change text
+	var new_text = \"You pressed Start!\"
+	start_button.text = new_text
+	
+
+
+func _on_settings_button_pressed():
+	var new_stylebox_normal = settings_button.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = settings_button.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = settings_button.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	# Change text
+	var new_text = \"You pressed Settings!\"
+	settings_button.text = new_text
+
+	settings_button.add_stylebox_override(\"normal\", new_stylebox_normal)
+	settings_button.add_stylebox_override(\"hover\", new_stylebox_hover)
+	settings_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+
+	
+func _on_exit_button_pressed():
+#	var new_stylebox_normal = mult_button.get_stylebox(\"normal\").duplicate()
+#	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+#	var new_stylebox_hover = mult_button.get_stylebox(\"hover\").duplicate()
+#	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+#	var new_stylebox_pressed = mult_button.get_stylebox(\"pressed\").duplicate()
+#	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+	get_tree().quit()
+	# Change text
+#	var new_text = \"You pressed Sub\"
+#	mult_button.text = new_text
+#
+#	mult_button.add_stylebox_override(\"normal\", new_stylebox_normal)
+#	mult_button.add_stylebox_override(\"hover\", new_stylebox_hover)
+#	mult_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+#
+#	label.add_color_override(\"font_color\", Color(0.5, 1, 0.75))
+	
+
+
+#func _on_reset_functions_button_pressed():
+#	# Resetting a theme override is done by setting the property to:
+#	# - `null` for fonts, icons, styleboxes, and shaders.
+#	# - `0` for constants.
+#	# - Colors must be reset manually by adding the previous color value as an override.
+#	for button in function_buttons:	
+#		button.add_stylebox_override(\"normal\", null)
+#		button.add_stylebox_override(\"hover\", null)
+#		button.add_stylebox_override(\"pressed\", null)
+#
+#	label.add_color_override(\"font_color\", default_label_color)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -6.0
+margin_right = -7.0
+margin_bottom = -6.0
+theme = SubResource( 5 )
+script = SubResource( 6 )
+
+[node name="StartScreen" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.5
+margin_top = -157.0
+margin_right = 75.5
+margin_bottom = 89.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="StartScreen"]
+margin_right = 172.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MicroStrike: Alien Skirmish"
+align = 1
+valign = 1
+
+[node name="StartButton" type="Button" parent="StartScreen"]
+margin_top = 68.0
+margin_right = 172.0
+margin_bottom = 114.0
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="StartScreen"]
+margin_top = 134.0
+margin_right = 172.0
+margin_bottom = 180.0
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="StartScreen"]
+margin_top = 200.0
+margin_right = 172.0
+margin_bottom = 246.0
+text = "Exit"
+
+[node name="SettingsScreen" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SelectGameScreen" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartScreen/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="StartScreen/ExitButton" to="." method="_on_exit_button_pressed"]
