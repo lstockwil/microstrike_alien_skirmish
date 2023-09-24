@@ -10,7 +10,7 @@ onready var label = $StartScreen/Label
 onready var start_button = $StartScreen/StartButton
 onready var settings_button = $StartScreen/SettingsButton
 onready var exit_button = $StartScreen/ExitButton
-
+onready var start_screen_container = $StartScreen
 
 
 onready var startscreen_buttons = [start_button, settings_button, exit_button]
@@ -35,20 +35,16 @@ func _on_start_button_pressed():
 	var new_stylebox_hover = start_button.get_stylebox("hover").duplicate()
 	new_stylebox_hover.border_color = Color(1, 1, 0)
 	
-	var new_stylebox_pressed = start_button.get_stylebox("pressed").duplicate()
-	new_stylebox_pressed.border_color = Color(1, 1, 0)
-	
+	#var new_stylebox_pressed = start_button.get_stylebox("pressed").duplicate()
+	#new_stylebox_pressed.border_color = Color(1, 1, 0)
 	
 	
 	start_button.add_stylebox_override("normal", new_stylebox_normal)
 	start_button.add_stylebox_override("hover", new_stylebox_hover)
-	start_button.add_stylebox_override("pressed", new_stylebox_pressed)
-	
+	#start_button.add_stylebox_override("pressed", new_stylebox_pressed)
+
 	# Change text
-	var new_text = "You pressed Start!"
-	start_button.text = new_text
-	
-	label.add_color_override("font_color", Color(1, 1, 0.5))
+	start_screen_container.visible = false
 
 
 func _on_settings_button_pressed():

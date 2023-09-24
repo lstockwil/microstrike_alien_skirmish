@@ -60,7 +60,11 @@ onready var label = $StartScreen/Label
 onready var start_button = $StartScreen/StartButton
 onready var settings_button = $StartScreen/SettingsButton
 onready var exit_button = $StartScreen/ExitButton
-
+onready var newGame_button = $SelectGameScreen/NewGameButton
+onready var loadGame_button = $SelectGameScreen/LoadGameButton
+onready var backButton = $SelectGameScreen/BackButton
+onready var start_screen_container = $StartScreen
+onready var select_game_container = $SelectGameScreen
 
 
 onready var startscreen_buttons = [start_button, settings_button, exit_button]
@@ -74,7 +78,7 @@ func _ready():
 	label.ALIGN_CENTER
 	#label.font = \"Comic Sans\"
 	# Focus the first button automatically for keyboard/controller-friendly navigation.
-	start_button.grab_focus()
+	#start_button.grab_focus()
 
 
 func _on_start_button_pressed():
@@ -95,13 +99,11 @@ func _on_start_button_pressed():
 	
 	start_button.add_stylebox_override(\"normal\", new_stylebox_normal)
 	start_button.add_stylebox_override(\"hover\", new_stylebox_hover)
-	start_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+	#start_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
 	
-	# Change text
-	var new_text = \"You pressed Start!\"
-	start_button.text = new_text
-	
-
+	# Hide screen reveal select game
+	start_screen_container.visible = false
+	select_game_container.visible = true
 
 func _on_settings_button_pressed():
 	var new_stylebox_normal = settings_button.get_stylebox(\"normal\").duplicate()
@@ -151,6 +153,53 @@ func _on_exit_button_pressed():
 #		button.add_stylebox_override(\"pressed\", null)
 #
 #	label.add_color_override(\"font_color\", default_label_color)
+
+
+func _on_NewGameButton_pressed():
+	var new_stylebox_normal = newGame_button.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = newGame_button.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = newGame_button.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	# Change text
+	var new_text = \"New game!\"
+	newGame_button.text = new_text
+
+	newGame_button.add_stylebox_override(\"normal\", new_stylebox_normal)
+	newGame_button.add_stylebox_override(\"hover\", new_stylebox_hover)
+	newGame_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+
+
+func _on_LoadGameButton_pressed():
+	var new_stylebox_normal = loadGame_button.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = loadGame_button.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = loadGame_button.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	# Change text
+	var new_text = \"Load game!\"
+	loadGame_button.text = new_text
+
+	loadGame_button.add_stylebox_override(\"normal\", new_stylebox_normal)
+	loadGame_button.add_stylebox_override(\"hover\", new_stylebox_hover)
+	loadGame_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+
+
+func _on_BackButton_pressed():
+	var new_stylebox_normal = backButton.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = backButton.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = backButton.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+	
+	# Hide select game screen reveal menu
+	select_game_container.visible = false
+	start_screen_container.visible = true
 "
 
 [node name="Control" type="Control"]
@@ -207,9 +256,48 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="SelectGameScreen" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.5
+margin_top = -157.0
+margin_right = 96.5
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="SelectGameScreen"]
+margin_right = 172.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MicroStrike: Alien Skirmish"
+align = 1
+valign = 1
+
+[node name="NewGameButton" type="Button" parent="SelectGameScreen"]
+margin_top = 52.0
+margin_right = 172.0
+margin_bottom = 98.0
+text = "New Game"
+icon_align = 1
+
+[node name="LoadGameButton" type="Button" parent="SelectGameScreen"]
+margin_top = 102.0
+margin_right = 172.0
+margin_bottom = 148.0
+text = "Load Game"
+
+[node name="BackButton" type="Button" parent="SelectGameScreen"]
+margin_top = 152.0
+margin_right = 172.0
+margin_bottom = 198.0
+text = "Back to Menu"
 
 [connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="StartScreen/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="StartScreen/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="SelectGameScreen/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="SelectGameScreen/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
+[connection signal="pressed" from="SelectGameScreen/BackButton" to="." method="_on_BackButton_pressed"]
