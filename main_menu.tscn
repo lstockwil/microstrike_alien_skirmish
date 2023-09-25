@@ -60,14 +60,19 @@ onready var label = $StartScreen/Label
 onready var start_button = $StartScreen/StartButton
 onready var settings_button = $StartScreen/SettingsButton
 onready var exit_button = $StartScreen/ExitButton
+onready var master_volume_btn = $SettingsScreen/MasterVolumeBtn
+onready var music_volume_btn = $SettingsScreen/MusicVolumeBtn
+onready var back_btn = $SettingsScreen/BackBtn
 onready var newGame_button = $SelectGameScreen/NewGameButton
 onready var loadGame_button = $SelectGameScreen/LoadGameButton
 onready var backButton = $SelectGameScreen/BackButton
 onready var start_screen_container = $StartScreen
 onready var select_game_container = $SelectGameScreen
+onready var settings_screen_container = $SettingsScreen
 
 
 onready var startscreen_buttons = [start_button, settings_button, exit_button]
+onready var settings_buttons = [music_volume_btn,master_volume_btn]
 
 # Save the label color so it can be reset.
 #var default_label_color = label.get_color(\"font_color\")
@@ -121,6 +126,8 @@ func _on_settings_button_pressed():
 	settings_button.add_stylebox_override(\"hover\", new_stylebox_hover)
 	settings_button.add_stylebox_override(\"pressed\", new_stylebox_pressed)
 
+	start_screen_container.visible = false
+	settings_screen_container.visible = true
 	
 func _on_exit_button_pressed():
 #	var new_stylebox_normal = mult_button.get_stylebox(\"normal\").duplicate()
@@ -154,6 +161,48 @@ func _on_exit_button_pressed():
 #
 #	label.add_color_override(\"font_color\", default_label_color)
 
+func _on_MasterVolumeBtn_pressed():
+	var new_stylebox_normal = master_volume_btn.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = master_volume_btn.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = master_volume_btn.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	# Change text
+	var new_text = \"Master Volume Muted\"
+	master_volume_btn.text = new_text
+
+	master_volume_btn.add_stylebox_override(\"normal\", new_stylebox_normal)
+	master_volume_btn.add_stylebox_override(\"hover\", new_stylebox_hover)
+	master_volume_btn.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+	
+func _on_MusicVolumeBtn_pressed():
+	var new_stylebox_normal = music_volume_btn.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = music_volume_btn.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = music_volume_btn.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	# Change text
+	var new_text = \"Music Volume Muted\"
+	music_volume_btn.text = new_text
+
+	music_volume_btn.add_stylebox_override(\"normal\", new_stylebox_normal)
+	music_volume_btn.add_stylebox_override(\"hover\", new_stylebox_hover)
+	music_volume_btn.add_stylebox_override(\"pressed\", new_stylebox_pressed)
+	
+func _on_BackBtn_pressed():
+	var new_stylebox_normal = backButton.get_stylebox(\"normal\").duplicate()
+	new_stylebox_normal.border_color = Color(0, 1, 0.5)
+	var new_stylebox_hover = backButton.get_stylebox(\"hover\").duplicate()
+	new_stylebox_hover.border_color = Color(0, 1, 0.5)
+	var new_stylebox_pressed = backButton.get_stylebox(\"pressed\").duplicate()
+	new_stylebox_pressed.border_color = Color(0, 1, 0.5)
+
+	settings_screen_container.visible = false
+	start_screen_container.visible = true
 
 func _on_NewGameButton_pressed():
 	var new_stylebox_normal = newGame_button.get_stylebox(\"normal\").duplicate()
@@ -213,6 +262,7 @@ theme = SubResource( 5 )
 script = SubResource( 6 )
 
 [node name="StartScreen" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -252,8 +302,33 @@ margin_bottom = 246.0
 text = "Exit"
 
 [node name="SettingsScreen" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 436.5
+margin_top = 131.0
+margin_right = 608.5
+margin_bottom = 377.0
+
+[node name="Label" type="Label" parent="SettingsScreen"]
+margin_right = 172.0
+margin_bottom = 14.0
+text = "Microstrike: Alien Skirmish"
+
+[node name="MasterVolumeBtn" type="Button" parent="SettingsScreen"]
+margin_top = 18.0
+margin_right = 172.0
+margin_bottom = 64.0
+text = "Master Volume"
+
+[node name="MusicVolumeBtn" type="Button" parent="SettingsScreen"]
+margin_top = 68.0
+margin_right = 172.0
+margin_bottom = 114.0
+text = "Music Volume"
+
+[node name="BackBtn" type="Button" parent="SettingsScreen"]
+margin_top = 118.0
+margin_right = 172.0
+margin_bottom = 164.0
+text = "Exit to Menu"
 
 [node name="SelectGameScreen" type="VBoxContainer" parent="."]
 visible = false
@@ -298,6 +373,9 @@ text = "Back to Menu"
 [connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="StartScreen/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="StartScreen/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="SettingsScreen/MasterVolumeBtn" to="." method="_on_MasterVolumeBtn_pressed"]
+[connection signal="pressed" from="SettingsScreen/MusicVolumeBtn" to="." method="_on_MusicVolumeBtn_pressed"]
+[connection signal="pressed" from="SettingsScreen/BackBtn" to="." method="_on_BackBtn_pressed"]
 [connection signal="pressed" from="SelectGameScreen/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="SelectGameScreen/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
 [connection signal="pressed" from="SelectGameScreen/BackButton" to="." method="_on_BackButton_pressed"]
