@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ufo_test.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -16,5 +19,20 @@ margin_right = 1485.0
 margin_bottom = 840.0
 color = Color( 0, 0.560784, 0.207843, 1 )
 
+[node name="Node2D" type="Node2D" parent="World Map"]
+position = Vector2( 483, 297 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Map/Node2D"]
+position = Vector2( 319, 159 )
+shape = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="World Map/Node2D/CollisionShape2D"]
+margin_left = 3.0
+margin_top = -21.0
+margin_right = 43.0
+margin_bottom = 19.0
+text = "UFO"
+
 [node name="PlayerBase" parent="World Map" instance=ExtResource( 2 )]
-position = Vector2( 936, 496 )
+position = Vector2( 943, 530 )
