@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Gameplay.gd" type="Script" id=3]
+
+[node name="Drone_Battle" type="Node2D"]
+position = Vector2( 2, 2 )
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -6, 4 )
+
+[node name="Laser" type="Node2D" parent="."]
+light_mask = 3
+position = Vector2( 0, 1 )
+
+[node name="Drone" type="Node2D" parent="."]
+light_mask = 3
+
+[node name="Drone_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="laser" from="Player" to="." method="_on_PLayer_laser"]
+[connection signal="timeout" from="Drone_Timer" to="." method="_on_Drone_Timer_timeout"]
