@@ -22,6 +22,10 @@ window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
+
 [input]
 
 mouse_click={
@@ -66,3 +70,7 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[tiled_importer]
+
+enable_json_format=true
