@@ -21,34 +21,32 @@ func _ready():
 func _process(delta):
 	#update time
 	counter = (counter + 1) % time_constant
-	if(counter == 0): #every *time constant* cycles of process, the in-game time is increased by one unit
+	if(counter == 0 and game_paused == false): #every *time constant* cycles of process, the in-game time is increased by one unit
 		game_time += 1
 		print(game_time)
-	
-	
-	#track player mouse movement
-	var position = get_global_mouse_position()
-	var offset = get_local_mouse_position()
-
-	if (Input.is_action_pressed("mouse_click")):
-		#var base = PlayerBASE.instance()
-		  #base.initialize(position, position)
-		#add_child(base)
-		pass
+#
+#		#track player mouse movement
+#		var position = get_global_mouse_position()
+#		var offset = get_local_mouse_position()
+#
+#		if (Input.is_action_pressed("mouse_click")):
+#			#var base = PlayerBASE.instance()
+#			  #base.initialize(position, position)
+#			#add_child(base)
+#			pass
 	
 	#Pause Menu Code
 	if(Input.is_action_just_pressed("pause")):
+		print("Here")
 		pauseMenu()
-		
+	
 		
 #PauseMenu() function only shows and hides menu, doesn't pause game right now: revisit once global time is implemented
 func pauseMenu(): #should trigger every time the "pause" event takes place (i.e. every time "Esc" is pressed)
 	if game_paused:
 		pause_menu.hide()
-		Engine.time_scale = 1
 	else:
 		pause_menu.show()
-		Engine.time_scale = 0
 		
 	game_paused = !game_paused
 		
