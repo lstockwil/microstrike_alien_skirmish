@@ -1,6 +1,7 @@
 extends Control
 
 export var PlayerBASE: PackedScene
+export(Array, NodePath) var Bases := []
 
 #get our PauseMenu scene as an object
 onready var pause_menu = $PauseMenu
@@ -10,7 +11,7 @@ var game_paused = false #boolean for status of pause
 func _ready():
 	pause_menu.hide() #make sure paused menu is not visible when the game starts
 	pass # Replace with function body.
-
+	#Bases.append(GET)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

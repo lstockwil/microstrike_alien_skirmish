@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://StratMarket/Market.gd" type="Script" id=1]
+
+[node name="Market" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Buy" type="Panel" parent="."]
+margin_right = 1027.0
+margin_bottom = 579.0
+
+[node name="Sell" type="Panel" parent="."]
+margin_right = 1027.0
+margin_bottom = 579.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 895.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 58.0
+tab_align = 0
+
+[node name="Buy" type="Button" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "FUND AMOUNT "
+
+[node name="Sell" type="Button" parent="TabContainer"]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+
+[node name="Target_Base" type="OptionButton" parent="."]
+margin_left = 894.0
+margin_top = 61.0
+margin_right = 1022.0
+margin_bottom = 81.0
+text = "BASE"

@@ -1,24 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ufo_test.gd" type="Script" id=3]
 [ext_resource path="res://GameCamera.gd" type="Script" id=4]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://base_map.tscn" type="PackedScene" id=6]
+[ext_resource path="res://StratSideOptions/showBases.gd" type="Script" id=7]
+[ext_resource path="res://StratSideOptions/Button.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="Control" type="Control"]
+[node name="MAIN" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+Bases = [ NodePath("World Map/BASES/PlayerBase"), NodePath("World Map/BASES/PlayerBase2") ]
 
 [node name="World Map" type="ColorRect" parent="."]
 process_priority = -1
-margin_left = -415.0
-margin_top = -245.0
-margin_right = 1485.0
-margin_bottom = 840.0
+margin_left = -398.0
+margin_top = -189.0
+margin_right = 1502.0
+margin_bottom = 896.0
 color = Color( 0, 0.560784, 0.207843, 1 )
 
 [node name="Node2D" type="Node2D" parent="World Map"]
@@ -36,14 +40,149 @@ margin_right = 43.0
 margin_bottom = 19.0
 text = "UFO"
 
-[node name="PlayerBase" parent="World Map" instance=ExtResource( 2 )]
-position = Vector2( 943, 530 )
+[node name="BASES" type="Control" parent="World Map"]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="GameCamera" type="Camera2D" parent="."]
-position = Vector2( 533, 273 )
-current = true
-smoothing_enabled = true
-smoothing_speed = 10.0
-script = ExtResource( 4 )
+[node name="PlayerBase" parent="World Map/BASES" instance=ExtResource( 2 )]
+position = Vector2( 709, 511 )
+baseName = "HQ"
+inventoryList = [ 15, 15, 2 ]
+soldierList = [ "Frank", "Joe", "Kevin", "Chuck", "Paul" ]
+scientists = 10
+engineers = 10
+fighters = 2
+
+[node name="PlayerBase2" parent="World Map/BASES" instance=ExtResource( 2 )]
+position = Vector2( 1741, 114 )
+baseName = "NORTH BASE"
+inventoryList = [ 2, 4, 5 ]
+soldierList = [ "Luke", "Han" ]
+engineers = 5
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="UI_Elements" type="CanvasLayer" parent="."]
+
+[node name="GameCamera" type="Camera2D" parent="UI_Elements"]
+position = Vector2( 533, 273 )
+current = true
+script = ExtResource( 4 )
+
+[node name="SideOptions" type="Panel" parent="UI_Elements"]
+margin_left = 891.0
+margin_right = 1025.0
+margin_bottom = 287.0
+
+[node name="paedia" type="Button" parent="UI_Elements/SideOptions"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 129.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 78, 20 )
+text = "UFOpaedia"
+
+[node name="bases" type="Button" parent="UI_Elements/SideOptions"]
+margin_left = 4.0
+margin_top = 26.0
+margin_right = 129.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 78, 20 )
+text = "Bases"
+script = ExtResource( 7 )
+baseOptions = NodePath("../../BaseList")
+baseButton = NodePath(".")
+
+[node name="intercept" type="Button" parent="UI_Elements/SideOptions"]
+margin_left = 4.0
+margin_top = 72.0
+margin_right = 129.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 78, 20 )
+text = "Intercept"
+
+[node name="construction" type="Button" parent="UI_Elements/SideOptions"]
+margin_left = 4.0
+margin_top = 49.0
+margin_right = 129.0
+margin_bottom = 69.0
+rect_pivot_offset = Vector2( 78, 20 )
+text = "Construction"
+
+[node name="market" type="Button" parent="UI_Elements/SideOptions"]
+margin_left = 4.0
+margin_top = 95.0
+margin_right = 128.0
+margin_bottom = 115.0
+rect_pivot_offset = Vector2( 78, 20 )
+text = "Funding"
+
+[node name="HOURS" type="RichTextLabel" parent="UI_Elements/SideOptions"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 42.0
+margin_top = 234.0
+margin_right = 68.0
+margin_bottom = 230.0
+text = "HOURS"
+
+[node name="DATE" type="RichTextLabel" parent="UI_Elements/SideOptions"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 6.0
+margin_top = 253.0
+margin_right = 67.0
+margin_bottom = 125.5
+text = "MONTH/DAY/YEAR"
+
+[node name="BaseList" type="Panel" parent="UI_Elements"]
+visible = false
+margin_left = 614.0
+margin_right = 893.0
+margin_bottom = 287.0
+
+[node name="Button" parent="UI_Elements/BaseList" instance=ExtResource( 8 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 259.0
+margin_bottom = 25.0
+text = "BASE 1"
+MAIN_PATH = NodePath("../../..")
+BASE_MAP = NodePath("../../Base_Map")
+
+[node name="Button2" parent="UI_Elements/BaseList" instance=ExtResource( 8 )]
+margin_left = 5.0
+margin_top = 29.0
+margin_right = 259.0
+margin_bottom = 49.0
+text = "BASE 1"
+MAIN_PATH = NodePath("../../..")
+BASE_MAP = NodePath("../../Base_Map")
+
+[node name="fighterList" type="Panel" parent="UI_Elements"]
+visible = false
+margin_left = 817.0
+margin_right = 891.0
+margin_bottom = 287.0
+
+[node name="Label" type="Label" parent="UI_Elements/fighterList"]
+margin_left = 14.0
+margin_top = 9.0
+margin_right = 60.0
+margin_bottom = 23.0
+text = "Aircraft"
+
+[node name="Control" parent="UI_Elements/fighterList" instance=ExtResource( 6 )]
+margin_left = -803.0
+margin_top = -14.0
+margin_right = -797.0
+margin_bottom = -40.0
+
+[node name="Base_Map" parent="UI_Elements" instance=ExtResource( 6 )]
+visible = false
+margin_top = -1.0
+margin_bottom = -27.0
+
+[connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
+[connection signal="pressed" from="UI_Elements/BaseList/Button" to="UI_Elements/BaseList/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="UI_Elements/BaseList/Button2" to="UI_Elements/BaseList/Button2" method="_on_Button_pressed"]
