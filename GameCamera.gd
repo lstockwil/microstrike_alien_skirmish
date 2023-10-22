@@ -19,7 +19,7 @@ func _input(event):
 		zoom.x -= .25
 		zoom.y -= .25
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var vec = get_position()
 
 # camera keyboard movements

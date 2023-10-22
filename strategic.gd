@@ -2,11 +2,13 @@ extends Control
 
 export var PlayerBASE: PackedScene
 
+signal time_passed
+
 #get our PauseMenu scene as an object
 onready var pause_menu = $PauseMenu
-var game_paused = false #boolean for status of pause 
 
-onready var time_constant = 100
+onready var game_paused = false #boolean for status of pause 
+onready var time_constant = 1000
 onready var counter = 0
 onready var game_time = 0
 
@@ -18,11 +20,12 @@ func _ready():
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#update time
 	counter = (counter + 1) % time_constant
 	if(counter == 0 and game_paused == false): #every *time constant* cycles of process, the in-game time is increased by one unit
 		game_time += 1
+		emit_signal("time_passed")
 		print(game_time)
 #
 #		#track player mouse movement

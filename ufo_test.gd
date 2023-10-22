@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#update the radar angle by .02 degrees every frame
 	angle = angle + .02
 	if(angle > 360):
