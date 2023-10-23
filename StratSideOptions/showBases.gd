@@ -29,8 +29,8 @@ func _on_bases_pressed():
 	var base0 = get_node("../../../World Map/BASES/PlayerBase")
 	var base1 = get_node("../../../World Map/BASES/PlayerBase2")
 	
-	var button0 = get_node("../../BaseList/Button")
-	var button1 = get_node("../../BaseList/Button2")
+	var button0 = get_node("../../BaseList/btn_baselist/Button")
+	var button1 = get_node("../../BaseList/btn_baselist/Button2")
 	button0.BASE_SELECTED = base0
 	button1.BASE_SELECTED = base1
 	button0.text = base0.get("baseName")

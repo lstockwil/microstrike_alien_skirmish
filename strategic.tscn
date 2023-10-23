@@ -20,10 +20,10 @@ Bases = [ NodePath("World Map/BASES/PlayerBase"), NodePath("World Map/BASES/Play
 [node name="World Map" type="ColorRect" parent="."]
 process_priority = -1
 margin_left = -398.0
-margin_top = -189.0
-margin_right = 1502.0
-margin_bottom = 896.0
-color = Color( 0, 0.560784, 0.207843, 1 )
+margin_top = -187.0
+margin_right = 1515.0
+margin_bottom = 891.0
+color = Color( 0.200397, 0.457031, 0.12854, 1 )
 
 [node name="Node2D" type="Node2D" parent="World Map"]
 position = Vector2( 483, 297 )
@@ -46,6 +46,7 @@ margin_bottom = 40.0
 
 [node name="PlayerBase" parent="World Map/BASES" instance=ExtResource( 2 )]
 position = Vector2( 709, 511 )
+MAIN = NodePath("../../..")
 baseName = "HQ"
 inventoryList = [ 15, 15, 2 ]
 soldierList = [ "Frank", "Joe", "Kevin", "Chuck", "Paul" ]
@@ -54,7 +55,8 @@ engineers = 10
 fighters = 2
 
 [node name="PlayerBase2" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 1741, 114 )
+position = Vector2( 1630, 276 )
+MAIN = NodePath("../../..")
 baseName = "NORTH BASE"
 inventoryList = [ 2, 4, 5 ]
 soldierList = [ "Luke", "Han" ]
@@ -141,23 +143,25 @@ margin_left = 614.0
 margin_right = 893.0
 margin_bottom = 287.0
 
-[node name="Button" parent="UI_Elements/BaseList" instance=ExtResource( 8 )]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 259.0
-margin_bottom = 25.0
-text = "BASE 1"
-MAIN_PATH = NodePath("../../..")
-BASE_MAP = NodePath("../../Base_Map")
+[node name="btn_baselist" type="VBoxContainer" parent="UI_Elements/BaseList"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 277.0
+margin_bottom = 285.0
 
-[node name="Button2" parent="UI_Elements/BaseList" instance=ExtResource( 8 )]
-margin_left = 5.0
-margin_top = 29.0
-margin_right = 259.0
-margin_bottom = 49.0
+[node name="Button" parent="UI_Elements/BaseList/btn_baselist" instance=ExtResource( 8 )]
+margin_right = 275.0
 text = "BASE 1"
-MAIN_PATH = NodePath("../../..")
-BASE_MAP = NodePath("../../Base_Map")
+MAIN_PATH = NodePath("../../../..")
+BASE_MAP = NodePath("../../../Base_Map")
+
+[node name="Button2" parent="UI_Elements/BaseList/btn_baselist" instance=ExtResource( 8 )]
+margin_top = 24.0
+margin_right = 275.0
+margin_bottom = 44.0
+text = "BASE 1"
+MAIN_PATH = NodePath("../../../..")
+BASE_MAP = NodePath("../../../Base_Map")
 
 [node name="fighterList" type="Panel" parent="UI_Elements"]
 visible = false
@@ -184,5 +188,5 @@ margin_top = -1.0
 margin_bottom = -27.0
 
 [connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
-[connection signal="pressed" from="UI_Elements/BaseList/Button" to="UI_Elements/BaseList/Button" method="_on_Button_pressed"]
-[connection signal="pressed" from="UI_Elements/BaseList/Button2" to="UI_Elements/BaseList/Button2" method="_on_Button_pressed"]
+[connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button" to="UI_Elements/BaseList/btn_baselist/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button2" to="UI_Elements/BaseList/btn_baselist/Button2" method="_on_Button_pressed"]

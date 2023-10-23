@@ -1,4 +1,5 @@
 extends Node2D
+export var MAIN : NodePath
 export var base = []
 export(String) var baseName
 export var inventoryList = []
@@ -14,11 +15,12 @@ export(int) var fighters = 0
 # var a = 2
 # var b = "text"
 
-func _getName():
-	return baseName
+func time_event():
+	print("Timep passed")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var main = get_node(MAIN)
+	main.connect("time_passed", self, "time_event")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

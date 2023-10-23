@@ -12,6 +12,7 @@ margin_right = 1027.0
 margin_bottom = 579.0
 
 [node name="Sell" type="Panel" parent="."]
+visible = false
 margin_right = 1027.0
 margin_bottom = 579.0
 

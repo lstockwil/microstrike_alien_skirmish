@@ -114,36 +114,60 @@ margin_bottom = 573.0
 rect_pivot_offset = Vector2( 156, 100 )
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/ctn_build_facilities"]
-margin_top = 231.0
+[node name="FundAmount" type="Label" parent="Panel/ctn_build_facilities"]
+margin_top = 186.0
 margin_right = 449.0
-margin_bottom = 245.0
+margin_bottom = 200.0
+text = "FUNDS"
+
+[node name="Label" type="Label" parent="Panel/ctn_build_facilities"]
+margin_top = 204.0
+margin_right = 449.0
+margin_bottom = 218.0
 text = "Installations"
 align = 1
 
 [node name="btn_hanger" type="Button" parent="Panel/ctn_build_facilities"]
-margin_top = 249.0
+margin_top = 222.0
 margin_right = 449.0
-margin_bottom = 269.0
+margin_bottom = 242.0
 text = "Hanger"
 
 [node name="btn_small_radar" type="Button" parent="Panel/ctn_build_facilities"]
-margin_top = 273.0
+margin_top = 246.0
 margin_right = 449.0
-margin_bottom = 293.0
+margin_bottom = 266.0
 text = "Small Radar System"
 
 [node name="btn_large_radar" type="Button" parent="Panel/ctn_build_facilities"]
-margin_top = 297.0
+margin_top = 270.0
 margin_right = 449.0
-margin_bottom = 317.0
+margin_bottom = 290.0
 text = "Large Radar System"
 
 [node name="btn_lab" type="Button" parent="Panel/ctn_build_facilities"]
-margin_top = 321.0
+margin_top = 294.0
 margin_right = 449.0
-margin_bottom = 341.0
+margin_bottom = 314.0
 text = "Laboratory"
+
+[node name="btn_workshop" type="Button" parent="Panel/ctn_build_facilities"]
+margin_top = 318.0
+margin_right = 449.0
+margin_bottom = 338.0
+text = "Workshop"
+
+[node name="btn_workshop2" type="Button" parent="Panel/ctn_build_facilities"]
+margin_top = 342.0
+margin_right = 449.0
+margin_bottom = 362.0
+text = "Living Space"
+
+[node name="Back" type="Button" parent="Panel/ctn_build_facilities"]
+margin_top = 366.0
+margin_right = 449.0
+margin_bottom = 386.0
+text = "Back"
 
 [node name="ctn_side_menu" type="Container" parent="Panel"]
 process_priority = 3
@@ -170,28 +194,40 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="btn_base_info" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
-margin_top = 241.0
+margin_top = 217.0
 margin_right = 442.0
-margin_bottom = 261.0
+margin_bottom = 237.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 text = "Base Information"
 
 [node name="btn_soldiers" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
-margin_top = 265.0
+margin_top = 241.0
 margin_right = 442.0
-margin_bottom = 285.0
+margin_bottom = 261.0
 text = "Soldiers"
 
 [node name="btn_build_facilities" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
+margin_top = 265.0
+margin_right = 442.0
+margin_bottom = 285.0
+text = "Build Facilities"
+
+[node name="btn_research" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
 margin_top = 289.0
 margin_right = 442.0
 margin_bottom = 309.0
-text = "Build Facilities"
+text = "Research"
 
-[node name="back" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
+[node name="btn_production" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
 margin_top = 313.0
 margin_right = 442.0
 margin_bottom = 333.0
+text = "Production"
+
+[node name="back" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
+margin_top = 337.0
+margin_right = 442.0
+margin_bottom = 357.0
 text = "Back"
 
 [node name="base_map" type="TileMap" parent="Panel"]
@@ -231,7 +267,42 @@ margin_right = 403.0
 margin_bottom = 531.0
 text = "Back"
 
+[node name="ResearchList" type="ItemList" parent="Panel"]
+visible = false
+margin_left = 578.0
+margin_top = 22.0
+margin_right = 1025.0
+margin_bottom = 552.0
+
+[node name="btn_resBack" type="Button" parent="Panel/ResearchList"]
+margin_left = 37.0
+margin_top = 505.0
+margin_right = 403.0
+margin_bottom = 525.0
+text = "Back"
+
+[node name="ProductionList" type="ItemList" parent="Panel"]
+visible = false
+margin_left = 578.0
+margin_top = 16.0
+margin_right = 1025.0
+margin_bottom = 552.0
+
+[node name="btn_prodBack" type="Button" parent="Panel/ProductionList"]
+margin_left = 37.0
+margin_top = 511.0
+margin_right = 403.0
+margin_bottom = 531.0
+text = "Back"
+
+[connection signal="pressed" from="Panel/ctn_build_facilities/Back" to="." method="_on_CTNBack_pressed"]
 [connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/btn_base_info" to="." method="_on_btn_base_info_pressed"]
+[connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/btn_soldiers" to="." method="_on_btn_soldiers_pressed"]
 [connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/btn_build_facilities" to="." method="_on_btn_build_facilities_pressed"]
+[connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/btn_research" to="." method="_on_btn_research_pressed"]
+[connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/btn_production" to="." method="_on_btn_production_pressed"]
 [connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Panel/BaseInfo/Button" to="." method="_on_BIButton_pressed"]
+[connection signal="pressed" from="Panel/SoldierList/Button2" to="." method="_on_SLButton_pressed"]
+[connection signal="pressed" from="Panel/ResearchList/btn_resBack" to="." method="_on_btn_resBack_pressed"]
+[connection signal="pressed" from="Panel/ProductionList/btn_prodBack" to="." method="_on_btn_prodBack_pressed"]
