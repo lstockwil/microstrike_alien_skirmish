@@ -12,7 +12,7 @@ config_version=4
 
 config/name="MicroStrike: Alien Skirmish"
 config/description="Demonstrates how to override GUI colors and styleboxes at runtime."
-run/main_scene="res://Globals.tscn"
+run/main_scene="res://main_menu.tscn"
 config/icon="res://icon.png"
 main_scene=false
 

@@ -9,10 +9,11 @@ onready var global_vars = "/root"
 var speed: int = 500
 var can_laser: bool = true
 
+
 func _ready():
 	#Connect the signal emitted when time passing (in the strategic.gd) to the given fucntion in this classs
 	var primary = get_node(".")
-	primary.connect("time_passed", self, "on_time_passed")
+	#primary.connect("time_passed", self, "on_time_passed")
 
 func _on_time_passed():
 		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -32,8 +33,7 @@ func _on_time_passed():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-
+func _process(_delta):
 	#rotate player
 	look_at(get_global_mouse_position())
 	var player_direction = (get_global_mouse_position() -position).normalized()

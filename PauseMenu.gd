@@ -16,7 +16,7 @@ func _on_resume_button_pressed():
 	#unpause
 	var new_stylebox_pressed = resume_button.get_stylebox("pressed").duplicate()
 	#resume_button.border_color = Color(0, 1, 0.5)
-	resume_button.text = "Pause Pressed!"
+	resume_button.text = "Resume Pressed!"
 
 	pass
 

@@ -85,7 +85,9 @@ func _ready():
 	label.ALIGN_CENTER
 	#label.font = \"Comic Sans\"
 	# Focus the first button automatically for keyboard/controller-friendly navigation.
+	$StartScreen.show()
 	start_button.grab_focus()
+	print(\"hi!!\")
 	
 
 
