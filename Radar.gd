@@ -1,20 +1,42 @@
-extends ColorRect
-var angle = 0
+extends Node2D
+var drone_scene: PackedScene = preload("res://Drone/Drone.tscn")
+var gameplay_scene = preload("res://Gameplay/Gameplay.tscn").instance()
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var rotation_speed = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+#	 $Drone.hide()
+	 $Spawn_Timer.start()
+	 
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func rotate_RadarLine(delta):
+	$Radar/RadarLine.set_rotation(deg2rad(rotation_speed*delta))
+	rotation_speed+=50
+	
+
 func _process(delta):
-	#update the radar angle by .02 degrees every frame
-	angle = angle + .02
-	if(angle > 360):
-		angle = 0
-	set_rotation(angle)
+	rotate_RadarLine(delta)
+	
+
+
+func _on_Spawn_Timer_timeout():
+	spawn_drone()
+	
+func spawn_drone():
+	var new_drone = drone_scene.instance()
+	var screen_size = get_viewport_rect().size
+	new_drone.position.x = screen_size.x
+	new_drone.position.y = screen_size.y / 2
+	new_drone.scale = Vector2(0.25,0.25)
+	$Incoming_Drone.add_child(new_drone)
+	new_drone.hide()
+
+
+func _on_Radar_body_entered(body):
+	print('Drone detected')
+	for child in $Incoming_Drone.get_children():
+		child.show()
+	get_tree().root.add_child(gameplay_scene)
+	hide()
