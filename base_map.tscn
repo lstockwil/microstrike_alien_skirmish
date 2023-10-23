@@ -274,6 +274,13 @@ margin_top = 22.0
 margin_right = 1025.0
 margin_bottom = 552.0
 
+[node name="btn_res" type="Button" parent="Panel/ResearchList"]
+margin_left = 37.0
+margin_top = 481.0
+margin_right = 403.0
+margin_bottom = 501.0
+text = "Start Research"
+
 [node name="btn_resBack" type="Button" parent="Panel/ResearchList"]
 margin_left = 37.0
 margin_top = 505.0
@@ -287,6 +294,13 @@ margin_left = 578.0
 margin_top = 16.0
 margin_right = 1025.0
 margin_bottom = 552.0
+
+[node name="btn_Startprod" type="Button" parent="Panel/ProductionList"]
+margin_left = 37.0
+margin_top = 487.0
+margin_right = 403.0
+margin_bottom = 507.0
+text = "Start Production"
 
 [node name="btn_prodBack" type="Button" parent="Panel/ProductionList"]
 margin_left = 37.0
@@ -304,5 +318,7 @@ text = "Back"
 [connection signal="pressed" from="Panel/ctn_side_menu/VBoxContainer/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Panel/BaseInfo/Button" to="." method="_on_BIButton_pressed"]
 [connection signal="pressed" from="Panel/SoldierList/Button2" to="." method="_on_SLButton_pressed"]
+[connection signal="pressed" from="Panel/ResearchList/btn_res" to="." method="_on_btn_res_pressed"]
 [connection signal="pressed" from="Panel/ResearchList/btn_resBack" to="." method="_on_btn_resBack_pressed"]
+[connection signal="pressed" from="Panel/ProductionList/btn_Startprod" to="." method="_on_btn_Startprod_pressed"]
 [connection signal="pressed" from="Panel/ProductionList/btn_prodBack" to="." method="_on_btn_prodBack_pressed"]

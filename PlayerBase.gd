@@ -4,6 +4,8 @@ export var base = []
 export(String) var baseName
 export var inventoryList = []
 export var soldierList = []
+export var ResearchList = []
+export var ProductionList = []
 # includes soldier + engineers + scientists
 export(int) var MAX_PERSONAL = 25
 export(int) var MAX_FIGHTERS = 0
@@ -16,7 +18,7 @@ export(int) var fighters = 0
 # var b = "text"
 
 func time_event():
-	print("Timep passed")
+	print(soldierList.size())
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var main = get_node(MAIN)

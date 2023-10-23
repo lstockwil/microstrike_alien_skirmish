@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Production",
+"language": "GDScript",
+"path": "res://Resources/Production.gd"
+}, {
+"base": "Resource",
+"class": "Research",
+"language": "GDScript",
+"path": "res://Resources/Research.gd"
+}, {
+"base": "Resource",
+"class": "Soldier",
+"language": "GDScript",
+"path": "res://Resources/Soldier.gd"
+} ]
+_global_script_class_icons={
+"Production": "",
+"Research": "",
+"Soldier": ""
+}
+
 [application]
 
 config/name="GUI Theming Override Demo"

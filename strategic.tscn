@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
@@ -8,8 +8,65 @@
 [ext_resource path="res://base_map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://StratSideOptions/showBases.gd" type="Script" id=7]
 [ext_resource path="res://StratSideOptions/Button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/Soldier.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 9 )
+Name = "Joe"
+Rank = "Rookie"
+Aim = 60
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 9 )
+Name = "Kevin"
+Rank = "Squaddie"
+Aim = 70
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 9 )
+Name = "Paul"
+Rank = "Squaddie"
+Aim = 70
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 9 )
+Name = "Jack"
+Rank = "Sergeant"
+Aim = 75
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 9 )
+Name = "Ted"
+Rank = "Captain"
+Aim = 85
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 9 )
+Name = "Han"
+Rank = "Colonel"
+Aim = 90
+Health = 0
+TimeUnits = 0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 9 )
+Name = "Luke"
+Rank = "Colonel"
+Aim = 90
+Health = 0
+TimeUnits = 0
 
 [node name="MAIN" type="Control"]
 anchor_right = 1.0
@@ -49,7 +106,7 @@ position = Vector2( 709, 511 )
 MAIN = NodePath("../../..")
 baseName = "HQ"
 inventoryList = [ 15, 15, 2 ]
-soldierList = [ "Frank", "Joe", "Kevin", "Chuck", "Paul" ]
+soldierList = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
 scientists = 10
 engineers = 10
 fighters = 2
@@ -59,7 +116,7 @@ position = Vector2( 1630, 276 )
 MAIN = NodePath("../../..")
 baseName = "NORTH BASE"
 inventoryList = [ 2, 4, 5 ]
-soldierList = [ "Luke", "Han" ]
+soldierList = [ SubResource( 7 ), SubResource( 8 ) ]
 engineers = 5
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
@@ -154,6 +211,7 @@ margin_right = 275.0
 text = "BASE 1"
 MAIN_PATH = NodePath("../../../..")
 BASE_MAP = NodePath("../../../Base_Map")
+BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase")
 
 [node name="Button2" parent="UI_Elements/BaseList/btn_baselist" instance=ExtResource( 8 )]
 margin_top = 24.0
@@ -162,6 +220,7 @@ margin_bottom = 44.0
 text = "BASE 1"
 MAIN_PATH = NodePath("../../../..")
 BASE_MAP = NodePath("../../../Base_Map")
+BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase2")
 
 [node name="fighterList" type="Panel" parent="UI_Elements"]
 visible = false
