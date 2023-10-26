@@ -264,15 +264,14 @@ theme = SubResource( 5 )
 script = SubResource( 6 )
 
 [node name="StartScreen" type="VBoxContainer" parent="."]
-anchor_left = 0.5
+anchor_left = 0.51
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.51
 anchor_bottom = 0.5
-margin_left = -75.5
+margin_left = -85.7401
 margin_top = -157.0
-margin_right = 75.5
+margin_right = 65.2599
 margin_bottom = 89.0
-custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="StartScreen"]
 margin_right = 172.0
@@ -285,29 +284,29 @@ align = 1
 valign = 1
 
 [node name="StartButton" type="Button" parent="StartScreen"]
-margin_top = 68.0
+margin_top = 52.0
 margin_right = 172.0
-margin_bottom = 114.0
+margin_bottom = 98.0
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="StartScreen"]
-margin_top = 134.0
+margin_top = 102.0
 margin_right = 172.0
-margin_bottom = 180.0
+margin_bottom = 148.0
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="StartScreen"]
-margin_top = 200.0
+margin_top = 152.0
 margin_right = 172.0
-margin_bottom = 246.0
+margin_bottom = 198.0
 text = "Exit"
 
 [node name="SettingsScreen" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 436.5
-margin_top = 131.0
+margin_top = 148.473
 margin_right = 608.5
-margin_bottom = 377.0
+margin_bottom = 394.473
 
 [node name="Label" type="Label" parent="SettingsScreen"]
 margin_right = 172.0

@@ -4,7 +4,7 @@ export var PlayerBASE: PackedScene
 export(Array, NodePath) var Bases := []
 export(int) var funds = 1000000
 #get our PauseMenu scene as an object
-onready var pause_menu = $PauseMenu
+onready var pause_menu = $"World Map/PauseMenu"
 var game_paused = false #boolean for status of pause 
 onready var time_constant = 50
 onready var counter = 0

@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Radar.gd" type="Script" id=1]
 [ext_resource path="res://detection.gd" type="Script" id=2]
 [ext_resource path="res://PlayerBase.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Research.gd" type="Script" id=4]
+[ext_resource path="res://Resources/Production.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+TechName = "NONE"
+research_time = 0
+Scientists_Working = 0
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+item_produce = "NONE"
+Engineers = 0
+ProduceTime = 0
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 274.41
@@ -11,6 +25,8 @@ radius = 274.41
 position = Vector2( 536, 294 )
 script = ExtResource( 3 )
 base = [ [ null, null, null ], [ null, null, null ], [ null, null, null ] ]
+ResearchList = [ SubResource( 2 ) ]
+ProductionList = [ SubResource( 3 ) ]
 
 [node name="Name" type="Label" parent="."]
 margin_left = 6.0
@@ -27,6 +43,7 @@ margin_left = -12.0
 margin_top = -11.0
 margin_right = 11.0
 margin_bottom = 12.0
+color = Color( 0.686275, 1, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

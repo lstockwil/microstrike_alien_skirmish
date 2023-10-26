@@ -9,18 +9,24 @@ export var ProductionList = []
 # includes soldier + engineers + scientists
 export(int) var MAX_PERSONAL = 25
 export(int) var MAX_FIGHTERS = 0
+export(int) var WKS_COUNT = 0
+export(int) var WKS_IN_USE = 0
+export(int) var LAB_COUNT = 0
+export(int) var LAB_IN_USE = 0
 export(int) var MAX_RADAR = 0
 export(int) var scientists = 0
 export(int) var engineers = 0
 export(int) var fighters = 0
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 func time_event():
-	print(soldierList.size())
+	print(ResearchList.size())
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Name.text = baseName
 	var main = get_node(MAIN)
 	main.connect("time_passed", self, "time_event")
 

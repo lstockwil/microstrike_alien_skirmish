@@ -80,8 +80,8 @@ func _on_btn_Startprod_pressed():
 func _on_btn_res_pressed():
 	print(BASE_SELECTED)
 	BASE_SELECTED.soldierList.push_front(Soldier.new())
-	BASE_SELECTED.ResearchList.push_front(Production.new("PLACE_HOLDER",0,100000000))
+	BASE_SELECTED.ResearchList.push_front(Research.new("PLACE_HOLDER",0,100000000))
 	var endLength = BASE_SELECTED.ResearchList.size() -1
-	research.add_item((BASE_SELECTED.ResearchList[endLength].item_produce)
-	+" | Working on: "+String(BASE_SELECTED.ResearchList[endLength].Engineers)
-	+" | Finished in: "+String(BASE_SELECTED.ResearchList[endLength].ProduceTime))
+	research.add_item((BASE_SELECTED.ResearchList[endLength].TechName)
+	+" | Working on: "+String(BASE_SELECTED.ResearchList[endLength].Scientists_Working)
+	+" | Finished in: "+String(BASE_SELECTED.ResearchList[endLength].research_time))

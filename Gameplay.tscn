@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Gameplay.gd" type="Script" id=3]
 
 [node name="Drone_Battle" type="Node2D"]
@@ -21,5 +21,4 @@ light_mask = 3
 wait_time = 5.0
 one_shot = true
 
-[connection signal="laser" from="Player" to="." method="_on_PLayer_laser"]
 [connection signal="timeout" from="Drone_Timer" to="." method="_on_Drone_Timer_timeout"]

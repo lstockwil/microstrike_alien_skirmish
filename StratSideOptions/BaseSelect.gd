@@ -25,11 +25,13 @@ func _on_Button_pressed():
 	#get Base items and personal list
 	var baseList = temp.get_child(0).get_child(3)
 	var soldierList = temp.get_child(0).get_child(4)
+	var resList = temp.get_child(0).get_child(5)
 	var prodList = temp.get_child(0).get_child(6)
 	temp.funds.text = "$"+String(get_node("../../../..").funds)
 	#clear list before adding items
 	baseList.clear()
 	soldierList.clear()
+	resList.clear()
 	prodList.clear()
 	#print(baseList.get_item_count())
 	baseList.add_item("Scientists: "+String(BASE_SELECTED.scientists))
@@ -48,6 +50,11 @@ func _on_Button_pressed():
 		prodList.add_item((BASE_SELECTED.ProductionList[n].item_produce)
 	+" | Working on: "+String(BASE_SELECTED.ProductionList[n].Engineers)
 	+" | Finished in: "+String(BASE_SELECTED.ProductionList[n].ProduceTime))
+	
+	for n in BASE_SELECTED.ResearchList.size():
+		resList.add_item((BASE_SELECTED.ResearchList[n].TechName)
+	+" | Working on: "+String(BASE_SELECTED.ResearchList[n].Scientists_Working)
+	+" | Finished in: "+String(BASE_SELECTED.ResearchList[n].research_time))
 	
 	temp.visible = true
 	

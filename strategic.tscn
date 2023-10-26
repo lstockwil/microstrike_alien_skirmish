@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
@@ -9,6 +9,21 @@
 [ext_resource path="res://StratSideOptions/showBases.gd" type="Script" id=7]
 [ext_resource path="res://StratSideOptions/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Resources/Soldier.gd" type="Script" id=9]
+[ext_resource path="res://world.png" type="Texture" id=11]
+
+[sub_resource type="Environment" id=9]
+background_mode = 4
+dof_blur_far_distance = 9.29
+dof_blur_far_transition = 0.1
+glow_enabled = true
+glow_intensity = 1.85
+glow_strength = 0.85
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 1.36
+adjustment_enabled = true
+adjustment_contrast = 2.16
+adjustment_saturation = 1.39
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -68,19 +83,36 @@ Aim = 90
 Health = 0
 TimeUnits = 0
 
+[sub_resource type="ShaderMaterial" id=11]
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Sprite
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
 [node name="MAIN" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 Bases = [ NodePath("World Map/BASES/PlayerBase"), NodePath("World Map/BASES/PlayerBase2") ]
 
-[node name="World Map" type="ColorRect" parent="."]
+[node name="World Map" type="WorldEnvironment" parent="."]
 process_priority = -1
-margin_left = -398.0
-margin_top = -187.0
-margin_right = 1515.0
-margin_bottom = 891.0
-color = Color( 0.200397, 0.457031, 0.12854, 1 )
+environment = SubResource( 9 )
 
 [node name="Node2D" type="Node2D" parent="World Map"]
 position = Vector2( 483, 297 )
@@ -102,36 +134,50 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="PlayerBase" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 709, 511 )
+position = Vector2( 684, 187 )
 MAIN = NodePath("../../..")
-baseName = "HQ"
+baseName = "NA HQ"
 inventoryList = [ 15, 15, 2 ]
 soldierList = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
+ResearchList = [  ]
+ProductionList = [  ]
 scientists = 10
 engineers = 10
 fighters = 2
 
 [node name="PlayerBase2" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 1630, 276 )
+position = Vector2( 1519, 68 )
 MAIN = NodePath("../../..")
-baseName = "NORTH BASE"
+baseName = "EU HQ"
 inventoryList = [ 2, 4, 5 ]
 soldierList = [ SubResource( 7 ), SubResource( 8 ) ]
+ResearchList = [  ]
+ProductionList = [  ]
 engineers = 5
 
-[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+[node name="PauseMenu" parent="World Map" instance=ExtResource( 5 )]
+
+[node name="Sprite" type="Sprite" parent="World Map"]
+process_priority = -4
+self_modulate = Color( 0, 1, 1, 1 )
+material = SubResource( 11 )
+position = Vector2( 1540.72, 311.25 )
+scale = Vector2( 1.47824, 1.47824 )
+texture = ExtResource( 11 )
+script = SubResource( 12 )
 
 [node name="UI_Elements" type="CanvasLayer" parent="."]
 
 [node name="GameCamera" type="Camera2D" parent="UI_Elements"]
-position = Vector2( 533, 273 )
+position = Vector2( 510, 288 )
 current = true
 script = ExtResource( 4 )
 
 [node name="SideOptions" type="Panel" parent="UI_Elements"]
-margin_left = 891.0
-margin_right = 1025.0
-margin_bottom = 287.0
+margin_left = 868.0
+margin_top = 15.0
+margin_right = 1002.0
+margin_bottom = 302.0
 
 [node name="paedia" type="Button" parent="UI_Elements/SideOptions"]
 margin_left = 4.0
@@ -196,9 +242,10 @@ text = "MONTH/DAY/YEAR"
 
 [node name="BaseList" type="Panel" parent="UI_Elements"]
 visible = false
-margin_left = 614.0
-margin_right = 893.0
-margin_bottom = 287.0
+margin_left = 590.0
+margin_top = 15.0
+margin_right = 869.0
+margin_bottom = 302.0
 
 [node name="btn_baselist" type="VBoxContainer" parent="UI_Elements/BaseList"]
 margin_left = 2.0
@@ -224,9 +271,10 @@ BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase2")
 
 [node name="fighterList" type="Panel" parent="UI_Elements"]
 visible = false
-margin_left = 817.0
-margin_right = 891.0
-margin_bottom = 287.0
+margin_left = 1406.0
+margin_top = -6.0
+margin_right = 1480.0
+margin_bottom = 281.0
 
 [node name="Label" type="Label" parent="UI_Elements/fighterList"]
 margin_left = 14.0
@@ -243,8 +291,10 @@ margin_bottom = -40.0
 
 [node name="Base_Map" parent="UI_Elements" instance=ExtResource( 6 )]
 visible = false
-margin_top = -1.0
-margin_bottom = -27.0
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 5.0
+margin_bottom = 1.0
 
 [connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button" to="UI_Elements/BaseList/btn_baselist/Button" method="_on_Button_pressed"]
