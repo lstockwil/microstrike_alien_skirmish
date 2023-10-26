@@ -134,7 +134,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="PlayerBase" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 684, 187 )
+position = Vector2( 675, 164 )
 MAIN = NodePath("../../..")
 baseName = "NA HQ"
 inventoryList = [ 15, 15, 2 ]
@@ -146,7 +146,7 @@ engineers = 10
 fighters = 2
 
 [node name="PlayerBase2" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 1519, 68 )
+position = Vector2( 1516, 71 )
 MAIN = NodePath("../../..")
 baseName = "EU HQ"
 inventoryList = [ 2, 4, 5 ]
@@ -174,10 +174,10 @@ current = true
 script = ExtResource( 4 )
 
 [node name="SideOptions" type="Panel" parent="UI_Elements"]
-margin_left = 868.0
-margin_top = 15.0
-margin_right = 1002.0
-margin_bottom = 302.0
+margin_left = 890.0
+margin_top = -1.0
+margin_right = 1024.0
+margin_bottom = 286.0
 
 [node name="paedia" type="Button" parent="UI_Elements/SideOptions"]
 margin_left = 4.0
@@ -227,8 +227,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 42.0
 margin_top = 234.0
-margin_right = 68.0
-margin_bottom = 230.0
+margin_right = 35.0
+margin_bottom = 103.5
 text = "HOURS"
 
 [node name="DATE" type="RichTextLabel" parent="UI_Elements/SideOptions"]
@@ -242,10 +242,10 @@ text = "MONTH/DAY/YEAR"
 
 [node name="BaseList" type="Panel" parent="UI_Elements"]
 visible = false
-margin_left = 590.0
-margin_top = 15.0
-margin_right = 869.0
-margin_bottom = 302.0
+margin_left = 611.0
+margin_top = -1.0
+margin_right = 890.0
+margin_bottom = 286.0
 
 [node name="btn_baselist" type="VBoxContainer" parent="UI_Elements/BaseList"]
 margin_left = 2.0
