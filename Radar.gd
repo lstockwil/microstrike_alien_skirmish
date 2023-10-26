@@ -1,6 +1,6 @@
 extends Node2D
-var drone_scene: PackedScene = preload("res://Drone/Drone.tscn")
-var gameplay_scene = preload("res://Gameplay/Gameplay.tscn").instance()
+var drone_scene: PackedScene = preload("res://Drone.tscn")
+var gameplay_scene = preload("res://Gameplay.tscn").instance()
 
 var rotation_speed = 0
 
