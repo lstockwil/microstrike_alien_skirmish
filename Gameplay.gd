@@ -1,7 +1,7 @@
 extends Node2D
 
-var laser_scene:PackedScene = preload("res://Laser/laser.tscn")
-var drone_scene: PackedScene = preload("res://Drone/Drone.tscn")
+var laser_scene:PackedScene = preload("res://laser.tscn")
+var drone_scene: PackedScene = preload("res://Drone.tscn")
 var rotation_speed = 2	
 var active_timers :int = 0
 
