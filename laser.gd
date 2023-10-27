@@ -4,13 +4,19 @@ var speed: int = 1000
 var direction: Vector2 = Vector2.UP
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	position += direction * speed * delta
+func _physics_process(delta):
+	global_position += direction * speed * delta
 	
 
 
 func _on_laser_body_entered(body):
-	if "hit" in body:
-		print("Drone hit")
-		body.hit()
+	
+	body.hit()
+	
 	queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+
+
