@@ -1,14 +1,85 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Graphics/enemies/drone.png" type="Texture" id=1]
 [ext_resource path="res://Drone/Drone.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Graphics/explosions/explosion_3.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 54.231
+radius = 54.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Explosion"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 63 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Drone_image:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Drone_image:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [node name="Drone" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 3
+collision/safe_margin = 0.001
 script = ExtResource( 2 )
 
 [node name="Drone_image" type="Sprite" parent="."]
@@ -18,12 +89,22 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 
 [node name="Laser_Position" type="Node2D" parent="."]
-position = Vector2( -51, -2 )
+position = Vector2( 59, 0 )
 
 [node name="Laser_Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Explosion" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explosion = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 
 [connection signal="timeout" from="Laser_Timer" to="." method="_on_Laser_Timer_timeout"]
