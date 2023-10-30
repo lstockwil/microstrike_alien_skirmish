@@ -4,7 +4,17 @@ signal laser(pos,direction)
 var can_laser = false
 var speed = 100
 var health = 50
-
+var startPoint
+var endPoint
+var moveDirection = -1
+var time = 0
+func _ready():
+	startPoint =self.global_position
+	var rndX = rand_range(-45,3165)
+	var rndY = rand_range(-564,1246)
+	endPoint = Vector2(rndX, rndY)
+	print(endPoint,startPoint)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#position of player minus enemy position will give us direction
@@ -22,14 +32,17 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	var player_position = Globals.player_pos
-	var target_position = (player_position - position).normalized()
-	
-	if position.distance_to(player_position) > 250:
-		move_and_slide(target_position * speed)
+	time += delta * moveDirection
+	var t = time / 50
+	self.global_position = lerp(startPoint, endPoint, t)
+	#var player_position = Globals.player_pos
+	#var target_position = (player_position - position).normalized()
+	#move_and_slide(target_position * speed)
+	#if position.distance_to(player_position) > 250:
 		
-	else: 
-		move_and_slide(target_position * -speed)
+		
+	#else: 
+		#move_and_slide(target_position * -speed)
 #		move_random_direction()
 	
 
@@ -38,3 +51,7 @@ func _on_Laser_Timer_timeout():
 	can_laser = true
 	
 	
+
+
+func _on_MissionTimer_timeout():
+	queue_free() # Replace with function body.

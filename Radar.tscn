@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Radar/Radar.gd" type="Script" id=1]
+[ext_resource path="res://Radar.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 270.224
@@ -21,13 +21,12 @@ margin_top = 3.0
 margin_right = 271.0
 margin_bottom = 8.0
 rect_rotation = 171.53
-color = Color( 0.466667, 0.454902, 0.203922, 1 )
 
 [node name="Incoming_Drone" type="Node2D" parent="."]
 
 [node name="Spawn_Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+wait_time = 0.856
 
 [connection signal="body_entered" from="Radar" to="." method="_on_Radar_body_entered"]
+[connection signal="body_exited" from="Radar" to="." method="_on_Radar_body_exited"]
 [connection signal="timeout" from="Spawn_Timer" to="." method="_on_Spawn_Timer_timeout"]

@@ -22,13 +22,13 @@ func _process(delta):
 
 
 func _on_Spawn_Timer_timeout():
-	spawn_drone()
+	spawn_drone()	
 	
 func spawn_drone():
 	var new_drone = drone_scene.instance()
 	var screen_size = get_viewport_rect().size
-	new_drone.position.x = screen_size.x
-	new_drone.position.y = screen_size.y / 2
+	new_drone.position.x = rand_range(-45,3165)
+	new_drone.position.y = rand_range(-564,1246)
 	new_drone.scale = Vector2(0.25,0.25)
 	$Incoming_Drone.add_child(new_drone)
 	new_drone.hide()
@@ -36,7 +36,12 @@ func spawn_drone():
 
 func _on_Radar_body_entered(body):
 	print('Drone detected')
-	for child in $Incoming_Drone.get_children():
-		child.show()
-	get_tree().root.add_child(gameplay_scene)
-	hide()
+	body.show()
+	#for child in $Incoming_Drone.get_children():
+	#	child.show()
+	#get_tree().root.add_child(gameplay_scene)
+	#hide()
+
+
+func _on_Radar_body_exited(body):
+	body.hide()

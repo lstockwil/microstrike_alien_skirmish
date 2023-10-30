@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ufo_test.gd" type="Script" id=3]
 [ext_resource path="res://GameCamera.gd" type="Script" id=4]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://base_map.tscn" type="PackedScene" id=6]
@@ -24,8 +23,6 @@ glow_hdr_scale = 1.36
 adjustment_enabled = true
 adjustment_contrast = 2.16
 adjustment_saturation = 1.39
-
-[sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 9 )
@@ -114,27 +111,12 @@ Bases = [ NodePath("World Map/BASES/PlayerBase"), NodePath("World Map/BASES/Play
 process_priority = -1
 environment = SubResource( 9 )
 
-[node name="Node2D" type="Node2D" parent="World Map"]
-position = Vector2( 483, 297 )
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Map/Node2D"]
-position = Vector2( 319, 159 )
-shape = SubResource( 1 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="World Map/Node2D/CollisionShape2D"]
-margin_left = 3.0
-margin_top = -21.0
-margin_right = 43.0
-margin_bottom = 19.0
-text = "UFO"
-
 [node name="BASES" type="Control" parent="World Map"]
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="PlayerBase" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 675, 164 )
+position = Vector2( 703, 153 )
 MAIN = NodePath("../../..")
 baseName = "NA HQ"
 inventoryList = [ 15, 15, 2 ]
@@ -146,7 +128,7 @@ engineers = 10
 fighters = 2
 
 [node name="PlayerBase2" parent="World Map/BASES" instance=ExtResource( 2 )]
-position = Vector2( 1516, 71 )
+position = Vector2( 1592, 59 )
 MAIN = NodePath("../../..")
 baseName = "EU HQ"
 inventoryList = [ 2, 4, 5 ]
@@ -225,9 +207,9 @@ text = "Funding"
 [node name="HOURS" type="RichTextLabel" parent="UI_Elements/SideOptions"]
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 42.0
+margin_left = 8.0
 margin_top = 234.0
-margin_right = 35.0
+margin_right = 37.0
 margin_bottom = 103.5
 text = "HOURS"
 
