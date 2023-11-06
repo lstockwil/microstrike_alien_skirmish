@@ -8,17 +8,26 @@ position = Vector2( 2, 2 )
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -6, 4 )
+position = Vector2( 498, 265 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Laser" type="Node2D" parent="."]
 light_mask = 3
-position = Vector2( 0, 1 )
+position = Vector2( 499, 264 )
 
 [node name="Drone" type="Node2D" parent="."]
 light_mask = 3
+position = Vector2( -15, 3 )
 
 [node name="Drone_Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 34.0
+margin_top = 24.0
+margin_right = 74.0
+margin_bottom = 64.0
 
 [connection signal="timeout" from="Drone_Timer" to="." method="_on_Drone_Timer_timeout"]

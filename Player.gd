@@ -4,7 +4,7 @@ signal laser(pos,direction)
 	
 var speed: int = 500
 var can_laser: bool = true
-
+var health: int = 50
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -25,5 +25,12 @@ func _on_Timer_timeout():
 	can_laser = true
 
 
+func die():
+	queue_free()
+
+func hit():
+	health -= 10
+	if health<=0:
+		die()
 
 	

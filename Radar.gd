@@ -1,7 +1,8 @@
 extends Node2D
 var drone_scene: PackedScene = preload("res://Drone.tscn")
 var gameplay_scene = preload("res://Gameplay.tscn").instance()
-
+signal detected
+signal exit
 var rotation_speed = 0
 
 func _ready():
@@ -35,8 +36,9 @@ func spawn_drone():
 
 
 func _on_Radar_body_entered(body):
-	print('Drone detected')
+	#print('Drone detected')
 	body.show()
+	emit_signal("detected",body)
 	#for child in $Incoming_Drone.get_children():
 	#	child.show()
 	#get_tree().root.add_child(gameplay_scene)
@@ -44,4 +46,5 @@ func _on_Radar_body_entered(body):
 
 
 func _on_Radar_body_exited(body):
+	emit_signal("exit",body)
 	body.hide()

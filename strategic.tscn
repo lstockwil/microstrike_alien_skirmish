@@ -187,6 +187,7 @@ margin_right = 129.0
 margin_bottom = 92.0
 rect_pivot_offset = Vector2( 78, 20 )
 text = "Intercept"
+script = ExtResource( 7 )
 
 [node name="construction" type="Button" parent="UI_Elements/SideOptions"]
 margin_left = 4.0
@@ -253,10 +254,10 @@ BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase2")
 
 [node name="fighterList" type="Panel" parent="UI_Elements"]
 visible = false
-margin_left = 1406.0
-margin_top = -6.0
-margin_right = 1480.0
-margin_bottom = 281.0
+margin_left = 698.0
+margin_top = -1.0
+margin_right = 890.0
+margin_bottom = 286.0
 
 [node name="Label" type="Label" parent="UI_Elements/fighterList"]
 margin_left = 14.0
@@ -266,6 +267,7 @@ margin_bottom = 23.0
 text = "Aircraft"
 
 [node name="Control" parent="UI_Elements/fighterList" instance=ExtResource( 6 )]
+visible = false
 margin_left = -803.0
 margin_top = -14.0
 margin_right = -797.0
@@ -279,5 +281,6 @@ margin_right = 5.0
 margin_bottom = 1.0
 
 [connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
+[connection signal="pressed" from="UI_Elements/SideOptions/intercept" to="UI_Elements/SideOptions/intercept" method="_on_intercept_pressed"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button" to="UI_Elements/BaseList/btn_baselist/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button2" to="UI_Elements/BaseList/btn_baselist/Button2" method="_on_Button_pressed"]

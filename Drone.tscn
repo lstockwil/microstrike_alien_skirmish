@@ -28,7 +28,7 @@ position = Vector2( -51, -2 )
 autostart = true
 
 [node name="MissionTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
