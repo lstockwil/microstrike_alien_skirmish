@@ -1,0 +1,49 @@
+extends CanvasLayer
+
+var sideMenuVisible = false
+
+func _ready():
+    hide_side_menu()
+
+func _process(delta):
+    if Input.is_action_just_pressed("toggle_menu"):
+        toggle_side_menu()
+
+func toggle_side_menu():
+    sideMenuVisible = not sideMenuVisible
+    if sideMenuVisible:
+        show_side_menu()
+    else:
+        hide_side_menu()
+
+func show_side_menu():
+    $Control.show()
+
+func hide_side_menu():
+    $Control.hide()
+
+# Function to switch to the main game scene
+func _on_PlayButton_pressed():
+    get_tree().change_scene("res://MainGameScene.tscn")
+
+# Function to switch to the settings scene
+func _on_SettingsButton_pressed():
+    get_tree().change_scene("res://SettingsScene.tscn")
+
+
+
+
+
+
+extends Control
+
+# Add any additional initialization code or UI elements here
+# ...
+
+# You can connect button signals and handle button presses here
+# ...
+
+# Example button press function
+func _on_YourButton_pressed():
+    # Add your button press logic here
+    print("Your button pressed!")
