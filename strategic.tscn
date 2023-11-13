@@ -137,7 +137,7 @@ ResearchList = [  ]
 ProductionList = [  ]
 engineers = 5
 
-[node name="PauseMenu" parent="World Map" instance=ExtResource( 5 )]
+[node name="PauseMenu2" parent="World Map" instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="World Map"]
 process_priority = -4
@@ -147,6 +147,38 @@ position = Vector2( 1540.72, 311.25 )
 scale = Vector2( 1.47824, 1.47824 )
 texture = ExtResource( 11 )
 script = SubResource( 12 )
+
+[node name="PauseMenu" type="CenterContainer" parent="World Map"]
+anchor_left = 0.278
+anchor_right = 0.278
+margin_left = -286.672
+margin_top = 3.0
+margin_right = 225.328
+margin_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="World Map/PauseMenu"]
+margin_left = 192.0
+margin_top = 121.0
+margin_right = 319.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 75, 50 )
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="World Map/PauseMenu/VBoxContainer"]
+margin_right = 127.0
+margin_bottom = 20.0
+text = "Resume"
+icon_align = 1
+
+[node name="ExitButton" type="Button" parent="World Map/PauseMenu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 127.0
+margin_bottom = 44.0
+text = "Exit to Main Menu"
+icon_align = 1
 
 [node name="UI_Elements" type="CanvasLayer" parent="."]
 
@@ -280,6 +312,8 @@ margin_top = 1.0
 margin_right = 5.0
 margin_bottom = 1.0
 
+[connection signal="pressed" from="World Map/PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_pause_menu_resume_pressed"]
+[connection signal="pressed" from="World Map/PauseMenu/VBoxContainer/ExitButton" to="." method="_on_pause_menu_exit_pressed"]
 [connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
 [connection signal="pressed" from="UI_Elements/SideOptions/intercept" to="UI_Elements/SideOptions/intercept" method="_on_intercept_pressed"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button" to="UI_Elements/BaseList/btn_baselist/Button" method="_on_Button_pressed"]

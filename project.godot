@@ -1,13 +1,6 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
+[]
 
 config_version=4
-
 _global_script_classes=[ {
 "base": "Resource",
 "class": "Production",
@@ -32,7 +25,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GUI Theming Override Demo"
+config/name="MicroStrike Alien Skirmish"
 config/description="Demonstrates how to override GUI colors and styleboxes at runtime."
 run/main_scene="res://main_menu.tscn"
 config/icon="res://icon.png"

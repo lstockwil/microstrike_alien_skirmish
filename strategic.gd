@@ -5,6 +5,9 @@ export(Array, NodePath) var Bases := []
 export(int) var funds = 1000000
 #get our PauseMenu scene as an object
 onready var pause_menu = $"World Map/PauseMenu"
+onready var pause_menu_resume_button = $"World Map/PauseMenu/VBoxContainer/ResumeButton"
+onready var pause_menu_exit_button = $"World Map/PauseMenu/VBoxContainer/ExitButton"
+
 var game_paused = false #boolean for status of pause 
 onready var time_constant = 50
 onready var counter = 0
@@ -45,6 +48,9 @@ func _process(delta):
 	if(Input.is_action_just_pressed("pause")):
 		pauseMenu()
 		
+
+
+
 func pauseMenu(): #should trigger every time the "pause" event takes place (i.e. every time "Esc" is pressed)
 	if game_paused:
 		pause_menu.hide()
@@ -57,3 +63,13 @@ func pauseMenu(): #should trigger every time the "pause" event takes place (i.e.
 		
 		
 
+
+
+func _on_pause_menu_resume_pressed():
+	pauseMenu()
+	
+
+
+
+func _on_pause_menu_exit_pressed():
+	get_tree().change_scene("res://main_menu.tscn")
