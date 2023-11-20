@@ -2,6 +2,7 @@ extends Button
 export var MAIN_PATH : NodePath
 export(NodePath) var BASE_MAP
 export(NodePath) var BASE_SELECTED
+signal pause_game
 #onready var base = get_node(BASE_SELECTED)
 # Declare member variables here. Examples:
 # var a = 2

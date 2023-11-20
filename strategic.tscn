@@ -316,5 +316,7 @@ margin_bottom = 1.0
 [connection signal="pressed" from="World Map/PauseMenu/VBoxContainer/ExitButton" to="." method="_on_pause_menu_exit_pressed"]
 [connection signal="pressed" from="UI_Elements/SideOptions/bases" to="UI_Elements/SideOptions/bases" method="_on_bases_pressed"]
 [connection signal="pressed" from="UI_Elements/SideOptions/intercept" to="UI_Elements/SideOptions/intercept" method="_on_intercept_pressed"]
+[connection signal="button_down" from="UI_Elements/BaseList/btn_baselist/Button" to="." method="_on_Base1_Button_down"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button" to="UI_Elements/BaseList/btn_baselist/Button" method="_on_Button_pressed"]
+[connection signal="button_down" from="UI_Elements/BaseList/btn_baselist/Button2" to="." method="_on_Base2_Button_down"]
 [connection signal="pressed" from="UI_Elements/BaseList/btn_baselist/Button2" to="UI_Elements/BaseList/btn_baselist/Button2" method="_on_Button_pressed"]

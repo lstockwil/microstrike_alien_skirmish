@@ -73,3 +73,11 @@ func _on_pause_menu_resume_pressed():
 
 func _on_pause_menu_exit_pressed():
 	get_tree().change_scene("res://main_menu.tscn")
+
+
+func _on_Base1_Button_down():
+	pauseMenu()
+	
+func _on_Base2_Button_down():
+	pauseMenu()
+	
