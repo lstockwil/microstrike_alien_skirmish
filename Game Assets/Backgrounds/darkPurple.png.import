@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/darkPurple.png-596723bbb346777bd19d266b370943aa.stex"
+path="res://.import/darkPurple.png-205623d9cc8a06bde74f9e7b7a891695.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Backgrounds/darkPurple.png"
-dest_files=[ "res://.import/darkPurple.png-596723bbb346777bd19d266b370943aa.stex" ]
+source_file="res://Game Assets/Backgrounds/darkPurple.png"
+dest_files=[ "res://.import/darkPurple.png-205623d9cc8a06bde74f9e7b7a891695.stex" ]
 
 [params]
 

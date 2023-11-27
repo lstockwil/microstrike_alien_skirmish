@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue.png-32bda64ea06d48ae97ad256c28fe8dc3.stex"
+path="res://.import/blue.png-976ef3c375019ec7f7a94bde0a2813d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Backgrounds/blue.png"
-dest_files=[ "res://.import/blue.png-32bda64ea06d48ae97ad256c28fe8dc3.stex" ]
+source_file="res://Game Assets/Backgrounds/blue.png"
+dest_files=[ "res://.import/blue.png-976ef3c375019ec7f7a94bde0a2813d7.stex" ]
 
 [params]
 

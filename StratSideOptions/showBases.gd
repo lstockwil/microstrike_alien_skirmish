@@ -1,6 +1,7 @@
 extends Button
 export var baseOptions : NodePath
 export var baseButton : NodePath
+var gameplay_scene = preload("res://Gameplay.tscn").instance()
 #var buttons = ["../../BaseList/Button","../../BaseList/Button2"]
 # Declare member variables here. Examples:
 # var a = 2
@@ -44,7 +45,7 @@ func _on_bases_pressed():
 
 
 func _on_intercept_pressed():
-	
+	get_tree().root.add_child(gameplay_scene)
 	var intercept = $"../../fighterList"
 	if intercept.is_visible() :
 		intercept.visible = false
