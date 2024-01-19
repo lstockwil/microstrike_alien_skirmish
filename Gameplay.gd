@@ -7,7 +7,7 @@ var active_timers :int = 0
 
 func _ready():
 #	 $Drone.hide()
-	 start_drone_timer(3)
+	 start_drone_timer(0)
 	 
 
 

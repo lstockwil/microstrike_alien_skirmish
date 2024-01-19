@@ -14,10 +14,7 @@ func _ready():
 func _process(delta):
 	var base0 = get_node("../../../World Map/BASES/PlayerBase")
 	var base1 = get_node("../../../World Map/BASES/PlayerBase2")
-	var targets = $"../../fighterList/Label"
-	targets.text = ""
-	for n in base0.RadarList.size():
-		targets.text = targets.text + base0.RadarList[n].name +"\n"
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -45,7 +42,7 @@ func _on_bases_pressed():
 
 
 func _on_intercept_pressed():
-	get_tree().root.add_child(gameplay_scene)
+	get_tree().change_scene("res://Gameplay.tscn")
 	var intercept = $"../../fighterList"
 	if intercept.is_visible() :
 		intercept.visible = false

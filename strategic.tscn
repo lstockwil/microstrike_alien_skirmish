@@ -252,26 +252,11 @@ MAIN_PATH = NodePath("../../../..")
 BASE_MAP = NodePath("../../../Base_Map")
 BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase2")
 
-[node name="fighterList" type="Panel" parent="UI_Elements"]
-visible = false
-margin_left = 698.0
-margin_top = -1.0
+[node name="fighterList" type="ItemList" parent="UI_Elements"]
+margin_left = 712.0
+margin_top = 2.0
 margin_right = 890.0
-margin_bottom = 286.0
-
-[node name="Label" type="Label" parent="UI_Elements/fighterList"]
-margin_left = 14.0
-margin_top = 9.0
-margin_right = 60.0
-margin_bottom = 23.0
-text = "Aircraft"
-
-[node name="Control" parent="UI_Elements/fighterList" instance=ExtResource( 6 )]
-visible = false
-margin_left = -803.0
-margin_top = -14.0
-margin_right = -797.0
-margin_bottom = -40.0
+margin_bottom = 285.0
 
 [node name="Base_Map" parent="UI_Elements" instance=ExtResource( 6 )]
 visible = false
