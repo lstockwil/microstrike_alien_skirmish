@@ -257,6 +257,7 @@ margin_left = 712.0
 margin_top = 2.0
 margin_right = 890.0
 margin_bottom = 285.0
+max_columns = 2
 
 [node name="Base_Map" parent="UI_Elements" instance=ExtResource( 6 )]
 visible = false

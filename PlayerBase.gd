@@ -26,11 +26,14 @@ func radar_update(UFO):
 	RadarList.append(UFO)
 	var targets = $"../../../UI_Elements/fighterList"
 	for n in RadarList.size():
-		targets.add_item(RadarList[n].name +"\n") 
+		targets.add_item(RadarList[n].name) 
 func radar_remove(UFO):
-	RadarList.erase(UFO)
 	var targets = $"../../../UI_Elements/fighterList"
-	#targets.clear()
+	for n in RadarList.size()-1:
+		if(RadarList[n].name == targets[n].name):
+			targets.remove(n)
+			print(targets[n].name)
+	RadarList.erase(UFO)
 func time_event():
 	print(ResearchList.size())
 # Called when the node enters the scene tree for the first time.
