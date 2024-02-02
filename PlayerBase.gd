@@ -34,8 +34,19 @@ func radar_remove(UFO):
 			targets.remove(n)
 			print(targets[n].name)
 	RadarList.erase(UFO)
+
 func time_event():
-	print(ResearchList.size())
+	var i = 0
+	#decrease research time for all research items
+	while i < ResearchList.size():
+		ResearchList[i].research_time = ResearchList[i].research_time -1
+		i = i + 1
+	i = 0	
+	while i < ProductionList.size():
+		ProductionList[i].ProduceTime = ProductionList[i].ProduceTime -1
+		i = i + 1
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Name.text = baseName

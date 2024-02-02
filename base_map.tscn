@@ -207,6 +207,7 @@ margin_bottom = 261.0
 text = "Soldiers"
 
 [node name="btn_build_facilities" type="Button" parent="Panel/ctn_side_menu/VBoxContainer"]
+visible = false
 margin_top = 265.0
 margin_right = 442.0
 margin_bottom = 285.0
