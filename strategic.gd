@@ -24,9 +24,9 @@ func _process(delta):
 	if(counter == 0 and game_paused == false): #every *time constant* cycles of process, the in-game time is increased by one unit
 		if(game_time >=24):
 			game_time = 0
+			emit_signal("time_passed")
 		else:
 			game_time += 1
-		emit_signal("time_passed")
 		var hourUI = get_node("UI_Elements/SideOptions/HOURS")
 		hourUI.text = String(game_time)+":00HRS"
 	

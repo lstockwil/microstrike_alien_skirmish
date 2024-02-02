@@ -253,6 +253,7 @@ BASE_MAP = NodePath("../../../Base_Map")
 BASE_SELECTED = NodePath("../../../../World Map/BASES/PlayerBase2")
 
 [node name="fighterList" type="ItemList" parent="UI_Elements"]
+visible = false
 margin_left = 712.0
 margin_top = 2.0
 margin_right = 890.0

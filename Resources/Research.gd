@@ -15,7 +15,9 @@ func _init(var name,var working, var time):
 	TechName = name
 	research_time = time
 	Scientists_Working = working
+	
+func researchFinish():
+	#add new research 
+	#add new item to produce
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
