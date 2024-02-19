@@ -40,10 +40,16 @@ func time_event():
 	#decrease research time for all research items
 	while i < ResearchList.size():
 		ResearchList[i].research_time = ResearchList[i].research_time -1
+		if(ResearchList[i].research_time == 0):
+			ResearchList.remove(i)
+			i = i-1
 		i = i + 1
 	i = 0	
 	while i < ProductionList.size():
 		ProductionList[i].ProduceTime = ProductionList[i].ProduceTime -1
+		if(ProductionList[i].ProduceTime == 0):
+			ProductionList.remove(i)
+			i = i-1
 		i = i + 1
 
 
