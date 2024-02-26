@@ -48,6 +48,7 @@ func time_event():
 	while i < ProductionList.size():
 		ProductionList[i].ProduceTime = ProductionList[i].ProduceTime -1
 		if(ProductionList[i].ProduceTime == 0):
+			inventoryList.append(ProductionList[i].item_produce)
 			ProductionList.remove(i)
 			i = i-1
 		i = i + 1
