@@ -1,5 +1,6 @@
 extends Control
 export var baseName: NodePath
+onready var  MAIN =  get_node("../../")
 onready var ctn_side_menu = $Panel/ctn_side_menu
 onready var ctn_build_facilities= $Panel/ctn_build_facilities
 onready var baseInfo= $Panel/BaseInfo
@@ -7,6 +8,7 @@ onready var soldierList= $Panel/SoldierList
 onready var research= $Panel/ResearchList
 onready var production= $Panel/ProductionList
 onready var funds= $Panel/ctn_build_facilities/FundAmount
+
 var BASE_SELECTED
 # Declare member variables here. Examples:
 # var a = 2
@@ -72,6 +74,7 @@ func _on_btn_Startprod_pressed():
 	print(BASE_SELECTED)
 	BASE_SELECTED.ProductionList.push_front(Production.new("PLACE_HOLDER",0,2))
 	var endLength = BASE_SELECTED.ProductionList.size() -1
+	
 	production.add_item((BASE_SELECTED.ProductionList[endLength].item_produce)
 	+" | Working on: "+String(BASE_SELECTED.ProductionList[endLength].Engineers)
 	+" | Finished in: "+String(BASE_SELECTED.ProductionList[endLength].ProduceTime))
@@ -80,8 +83,10 @@ func _on_btn_Startprod_pressed():
 func _on_btn_res_pressed():
 	print(BASE_SELECTED)
 	#BASE_SELECTED.soldierList.push_front(Soldier.new())
-	BASE_SELECTED.ResearchList.push_front(Research.new("PLACE_HOLDER",0,2))
+	var temp = MAIN.tech_tree[0]
+	BASE_SELECTED.ResearchList.push_front((temp))
 	var endLength = BASE_SELECTED.ResearchList.size() -1
+	
 	research.add_item((BASE_SELECTED.ResearchList[endLength].TechName)
 	+" | Working on: "+String(BASE_SELECTED.ResearchList[endLength].Scientists_Working)
 	+" | Finished in: "+String(BASE_SELECTED.ResearchList[endLength].research_time))

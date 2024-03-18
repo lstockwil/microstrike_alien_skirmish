@@ -3,6 +3,8 @@ extends Control
 export var PlayerBASE: PackedScene
 export(Array, NodePath) var Bases := []
 export(int) var funds = 1000000
+export(Array,Resource) var tech_tree := [] 
+export(Array,Resource) var production_tree := [] 
 #get our PauseMenu scene as an object
 onready var pause_menu = $"World Map/PauseMenu"
 var game_paused = false #boolean for status of pause 

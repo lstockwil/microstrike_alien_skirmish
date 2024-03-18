@@ -2,6 +2,8 @@ extends Button
 export var MAIN_PATH : NodePath
 export(NodePath) var BASE_MAP
 export(NodePath) var BASE_SELECTED
+var sci_icon = preload("res://Game Assets/research.png")
+var soldier_icon = preload("res://Game Assets/soldier.png")
 #onready var base = get_node(BASE_SELECTED)
 # Declare member variables here. Examples:
 # var a = 2
@@ -34,7 +36,8 @@ func _on_Button_pressed():
 	resList.clear()
 	prodList.clear()
 	#print(baseList.get_item_count())
-	baseList.add_item("Scientists: "+String(BASE_SELECTED.scientists))
+	baseList.icon_mode = ItemList.ICON_MODE_LEFT
+	baseList.add_item("Scientists: "+String(BASE_SELECTED.scientists),sci_icon,true)
 	baseList.add_item("Engineers: "+String(BASE_SELECTED.engineers))
 	baseList.add_item("Fighter Craft: "+String(BASE_SELECTED.fighters))
 	
@@ -44,7 +47,7 @@ func _on_Button_pressed():
 	for n in BASE_SELECTED.soldierList.size():
 		soldierList.add_item((BASE_SELECTED.soldierList[n].Name) 
 		+" | Rank: "+BASE_SELECTED.soldierList[n].Rank
-		+" | Aim: "+String(BASE_SELECTED.soldierList[n].Aim))	
+		+" | Aim: "+String(BASE_SELECTED.soldierList[n].Aim),soldier_icon,true)	
 	
 	for n in BASE_SELECTED.ProductionList.size():
 		prodList.add_item((BASE_SELECTED.ProductionList[n].item_produce)
