@@ -3,7 +3,7 @@ extends Control
 export var PlayerBASE: PackedScene
 export(Array, NodePath) var Bases := []
 export(int) var funds = 1000000
-export(Array,Resource) var tech_tree := [] 
+export var tech_tree = [] 
 export(Array,Resource) var production_tree := [] 
 #get our PauseMenu scene as an object
 onready var pause_menu = $"World Map/PauseMenu"
@@ -18,6 +18,7 @@ func _ready():
 	pause_menu.hide() #make sure paused menu is not visible when the game starts
 	pass # Replace with function body.
 	#Bases.append(GET)
+	create_TechTree()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -57,5 +58,7 @@ func pauseMenu(): #should trigger every time the "pause" event takes place (i.e.
 		
 	game_paused = !game_paused
 		
-		
+func create_TechTree():
+	tech_tree.push_back(Research.new("Hybrid Materials",0,2))		
+	tech_tree.push_back(Research.new("Modular Weapons",0,2))
 

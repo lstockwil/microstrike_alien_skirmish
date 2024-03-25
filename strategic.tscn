@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://strategic.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBase.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Resources/Research.gd" type="Script" id=3]
 [ext_resource path="res://GameCamera.gd" type="Script" id=4]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://base_map.tscn" type="PackedScene" id=6]
@@ -10,12 +9,6 @@
 [ext_resource path="res://StratSideOptions/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Resources/Soldier.gd" type="Script" id=9]
 [ext_resource path="res://world.png" type="Texture" id=11]
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 3 )
-TechName = "Hybrid Materials"
-research_time = 30
-Scientists_Working = 0
 
 [sub_resource type="Environment" id=9]
 background_mode = 4
@@ -113,7 +106,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 Bases = [ NodePath("World Map/BASES/PlayerBase"), NodePath("World Map/BASES/PlayerBase2") ]
-tech_tree = [ SubResource( 13 ) ]
 
 [node name="World Map" type="WorldEnvironment" parent="."]
 process_priority = -1

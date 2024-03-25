@@ -13,7 +13,7 @@ func _ready():
 	var rndX = rand_range(-45,3165)
 	var rndY = rand_range(-564,1246)
 	endPoint = Vector2(rndX, rndY)
-	print(endPoint,startPoint)
+	#print(endPoint,startPoint)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

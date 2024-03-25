@@ -1,5 +1,6 @@
 extends Control
 export var baseName: NodePath
+var sci_icon = preload("res://Game Assets/research.png")
 onready var  MAIN =  get_node("../../")
 onready var ctn_side_menu = $Panel/ctn_side_menu
 onready var ctn_build_facilities= $Panel/ctn_build_facilities
@@ -8,7 +9,7 @@ onready var soldierList= $Panel/SoldierList
 onready var research= $Panel/ResearchList
 onready var production= $Panel/ProductionList
 onready var funds= $Panel/ctn_build_facilities/FundAmount
-
+var temp
 var BASE_SELECTED
 # Declare member variables here. Examples:
 # var a = 2
@@ -83,10 +84,10 @@ func _on_btn_Startprod_pressed():
 func _on_btn_res_pressed():
 	print(BASE_SELECTED)
 	#BASE_SELECTED.soldierList.push_front(Soldier.new())
-	var temp = MAIN.tech_tree[0]
-	BASE_SELECTED.ResearchList.push_front((temp))
+	temp = MAIN.tech_tree[0] 
+	BASE_SELECTED.ResearchList.push_front(temp)
 	var endLength = BASE_SELECTED.ResearchList.size() -1
-	
+	MAIN.tech_tree.pop_at(0)
 	research.add_item((BASE_SELECTED.ResearchList[endLength].TechName)
 	+" | Working on: "+String(BASE_SELECTED.ResearchList[endLength].Scientists_Working)
-	+" | Finished in: "+String(BASE_SELECTED.ResearchList[endLength].research_time))
+	+" | Finished in: "+String(BASE_SELECTED.ResearchList[endLength].research_time),sci_icon,true)
